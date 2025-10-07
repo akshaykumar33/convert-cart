@@ -10,7 +10,8 @@ export function FilterConditions({
   onEvaluate?: (rules: string[]) => Promise<void>;
   loading?: boolean;
 }) {
-   const initialValues ="price > 400\ncategory = Jackets\nstock_status = instock\nbrand != Samsung\nrating >= 4.0";
+  const initialValues =
+    "price > 400\ncategory = Jackets\nstock_status = instock\nbrand != Samsung\nrating >= 4.0";
 
   const [rules, setRules] = useState(initialValues);
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,10 @@ export function FilterConditions({
     setLoading(true);
     setError(null);
     try {
-      const conditions = rules.split("\n").map((s) => s.trim()).filter(Boolean);
+      const conditions = rules
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean);
       if (onEvaluate) {
         await onEvaluate(conditions);
       }
@@ -37,12 +41,16 @@ export function FilterConditions({
     setError(null);
   };
 
-  
   return (
     <div className="w-full flex justify-center py-6">
       <div className="w-full max-w-2xl bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
-        <h2 className="text-2xl font-semibold text-center mb-6">Define Filter Conditions</h2>
-        <label htmlFor="filter-rules" className="block text-sm font-medium text-gray-600 mb-2">
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          Define Filter Conditions
+        </h2>
+        <label
+          htmlFor="filter-rules"
+          className="block text-sm font-medium text-gray-600 mb-2"
+        >
           Enter filter rules (one per line):
         </label>
         <textarea
@@ -52,11 +60,12 @@ export function FilterConditions({
           onChange={(e) => setRules(e.target.value)}
           rows={10}
           disabled={loading || externalLoading}
-          style={{ resize: "none",overflow:"hidden" }}
+          style={{ resize: "none", overflow: "hidden" }}
         />
-        <br/>
+        <br />
         <p className="mt-2 text-sm text-gray-500">
-          Examples: price &gt; 5000, category = Smartphones, stock_status = instock
+          Examples: price &gt; 5000, category = Smartphones, stock_status =
+          instock
         </p>
         <div className="flex items-center mt-6 gap-2">
           <button
@@ -77,28 +86,39 @@ export function FilterConditions({
             <RotateCcw className="mr-2 h-5 w-5" /> Reset
           </button>
         </div>
-        {error && (
-          <div className="mt-3 text-red-600 font-medium">{error}</div>
-        )}
-        <br/>
-<div className="mt-7 rounded-[10px] border border-gray-200 bg-[#FAFBFC] px-6 py-4 flex items-start">
-      <span className="pt-[2.5px] mr-3">
-        <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400" size="lg" />
-      </span>
-      <div>
-        <span className="block font-medium text-gray-700 text-[18px]" style={{ fontFamily: "Inter, Arial, sans-serif" }}>
-          Supported operators:
-        </span>
-        <div className="mt-1 flex gap-7 text-[18px] leading-[25px] font-mono tracking-wide text-gray-700" style={{ fontFamily: "Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" }}>
-          <span>=</span>
-          <span>!=</span>
-          <span>&gt;</span>
-          <span>&lt;</span>
-          <span>&gt;=</span>
-          <span>&lt;=</span>
+        {error && <div className="mt-3 text-red-600 font-medium">{error}</div>}
+        <br />
+        <div className="mt-7 rounded-[10px] border border-gray-200 bg-[#FAFBFC] px-6 py-4 flex items-start">
+          <span className="pt-[2.5px] mr-3">
+            <FontAwesomeIcon
+              icon={faInfoCircle}
+              className="text-gray-400"
+              size="lg"
+            />
+          </span>
+          <div>
+            <span
+              className="block font-medium text-gray-700 text-[18px]"
+              style={{ fontFamily: "Inter, Arial, sans-serif" }}
+            >
+              Supported operators:
+            </span>
+            <div
+              className="mt-1 flex gap-7 text-[18px] leading-[25px] font-mono tracking-wide text-gray-700"
+              style={{
+                fontFamily:
+                  "Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+              }}
+            >
+              <span>=</span>
+              <span>!=</span>
+              <span>&gt;</span>
+              <span>&lt;</span>
+              <span>&gt;=</span>
+              <span>&lt;=</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
       </div>
     </div>
   );

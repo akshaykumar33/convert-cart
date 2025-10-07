@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ProductCard } from "@/app/components/ProductCard ";
 import { PRODUCTS_API_URL } from "@/app/config/config";
+import Skeleton from "../Skeleton";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -36,7 +37,15 @@ export default function ProductsPage() {
     <div className="container mx-auto p-6">
       <h1 className="text-2xl text-center font-bold mb-6">Products</h1>
 
-      {loading && <p>Loading products...</p>}
+      {loading && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {Array(10)
+            .fill(0)
+            .map((_, i) => (
+              <Skeleton key={i} />
+            ))}
+        </div>
+      )}
       {error && <p className="text-red-600">{error}</p>}
 
       {!loading && !error && (
