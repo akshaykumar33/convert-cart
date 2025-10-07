@@ -37,7 +37,7 @@ export function FilterConditions({
     setError(null);
   };
 
-  // Always use &gt; or &lt; and similar for HTML entities!
+  
   return (
     <div className="w-full flex justify-center py-6">
       <div className="w-full max-w-2xl bg-white rounded-xl border border-gray-200 p-8 shadow-sm">

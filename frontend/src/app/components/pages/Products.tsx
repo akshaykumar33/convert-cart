@@ -21,8 +21,8 @@ export default function ProductsPage() {
       setProducts(data.products);
       setTotalPages(data.pagination.pages);
       setPage(data.pagination.page);
-    } catch (err: any) {
-      setError(err.message || "Unexpected error");
+    } catch (err:any) {
+      setError(err?.message || "Unexpected error");
     } finally {
       setLoading(false);
     }
