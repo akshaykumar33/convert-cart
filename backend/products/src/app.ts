@@ -2,6 +2,8 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import compression from 'compression';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './docs/swagger';
 import { httpLogger } from './apis/middlewares/logger';
 import { errorHandler } from './apis/middlewares/error';
 import productsRouter from './apis/routes/products.route';
@@ -30,7 +32,7 @@ app.use(limiter);
 // routes
 app.use('/health', healthRouter);
 app.use('/api/products', productsRouter);
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // 404
 app.use((_req, res) => res.status(404).json({ error: 'Route not found' }));
