@@ -42,8 +42,8 @@ segments/
 
 1. Clone the repo and install dependencies:
 ```bash
-git clone <repo-url>
-cd segments-service
+git clone <https://github.com/akshaykumar33/convert-cart>
+cd segments
 npm install
 ```
 

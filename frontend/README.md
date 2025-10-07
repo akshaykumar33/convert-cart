@@ -65,8 +65,8 @@ src/
 ### Installation
 
 ```bash
-git clone <repo-url>
-cd <frontend-folder>
+git clone <https://github.com/akshaykumar33/convert-cart>
+cd <frontend>
 npm install
 ```
 

@@ -46,8 +46,8 @@ Manage product data, provide product lookup, filtering, and CRUD operations, and
 
 1. Clone the repo and install dependencies:
 ```bash
-git clone <repo-url>
-cd products-service
+git clone <https://github.com/akshaykumar33/convert-cart>
+cd products
 npm install
 ```
 
