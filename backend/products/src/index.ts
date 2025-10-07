@@ -13,6 +13,7 @@ import { startProductSyncCron } from './utils/sync';
 
     app.listen(config.port, () => {
       logger.info('Server listening on port %d', config.port);
+      startProductSyncCron();
     });
      // Start periodic product sync cron after server starts
     startProductSyncCron();
