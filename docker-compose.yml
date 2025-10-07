@@ -1,8 +1,7 @@
 version: "3.9"
 
 services:
-  backend:
-   products:
+  products:
     build:
       context: ./backend/products
       dockerfile: Dockerfile
@@ -12,7 +11,8 @@ services:
     env_file:
       - ./backend/products/.env
     restart: unless-stopped
-   segments:
+
+  segments:
     build:
       context: ./backend/segments
       dockerfile: Dockerfile
@@ -22,15 +22,17 @@ services:
     env_file:
       - ./backend/segments/.env
     restart: unless-stopped
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: woocommerce-frontend
+    container_name: frontend
     ports:
       - "7000:7000"
     env_file:
       - ./frontend/.env
     depends_on:
-      - backend
+      - products
+      - segments
     restart: unless-stopped
