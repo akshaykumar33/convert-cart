@@ -4,6 +4,8 @@ import cors from 'cors';
 import compression from 'compression';
 import { httpLogger } from './apis/middlewares/logger';
 import { errorHandler } from './apis/middlewares/error';
+import productsRouter from './apis/routes/products.route';
+import healthRouter from './apis/routes/health';
 import { config } from './utils/config';
 import rateLimit from 'express-rate-limit';
 
@@ -26,6 +28,8 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // routes
+app.use('/health', healthRouter);
+app.use('/api/products', productsRouter);
 
 
 // 404

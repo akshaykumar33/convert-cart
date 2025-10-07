@@ -5,7 +5,8 @@ import compression from 'compression';
 
 import { httpLogger } from './apis/middlewares/logger';
 import { errorHandler } from './apis/middlewares/error';
-
+import segmentsRouter from './apis/routes/segments.route';
+import healthRouter from './apis/routes/health';
 import { config } from './utils/config';
 import rateLimit from 'express-rate-limit';
 
@@ -28,6 +29,8 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // routes
+app.use('/health', healthRouter);
+app.use('/api/segments', segmentsRouter);
 
 
 // 404
