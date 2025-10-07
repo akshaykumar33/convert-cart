@@ -1,0 +1,3 @@
+
+export const PRODUCTS_API_URL = process.env.NEXT_PUBLIC_PRODUCTS_API_URL;
+export const SEGMENTS_API_URL = process.env.NEXT_PUBLIC_SEGMENTS_API_URL;
